@@ -1,0 +1,95 @@
+<style>
+   .vertical {
+            margin-top: 10px;
+            margin-left: 320px;
+            border-left: 5px solid black;
+            height: 200px;
+        }
+</style>
+
+
+<div class="container" style="margin-left:300px ; margin-top: 100px;">
+    <div class="card border-primar">
+    <div class="card-header">
+    <div class="card-body text-primary">
+    
+    <form [formGroup]="postcodeslookupForm" (ngSubmit)="OnSubmit()">
+                
+        <div>
+    
+          <label for="Postcode"  >Postcode</label>
+          <input type="text" class="form-control"   
+          formControlName="fPostcode"         
+         id="Postcode"  >      
+    
+        </div>
+       <div style="margin-top: 20px;margin-left:1090px;" >
+        <button type="submit" class="btn btn-primary">{{btnSearch}}</button>
+       </div>
+        
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+<div>
+    <i style='font-size:24px; margin-left: 314px;  margin-top: 50px; ' class='fas'  >&#xf3c5;   </i>
+    <label style="font-size:20px; margin-left: 20px;"  >{{userlocation}}</label>
+    <div class = "vertical">
+        <div>
+            
+            <label style="font-size:20px; margin-left: 20px;margin-top: 60px;"  >Distance in kilometers : </label>
+            <label style="font-size:20px;margin-top: 60px;">{{distanceKM}}</label>
+        </div>
+        
+        <div>
+            <label style="font-size:20px; margin-left: 20px;"  >Distance in miles : </label>
+            <label style="font-size:20px;"  >{{distanceM}}</label>
+        </div>
+    </div>
+    <i style='font-size:24px; margin-left: 314px;  margin-top: 10px; ' class='fas'  >&#xf3c5;</i>
+    <label style="font-size:20px; margin-left: 20px;" >Heathrow Airport, London, England</label>
+</div>
+<div>
+    <label style='font-size:24px; margin-left: 314px;  margin-top: 50px;'  >History (Last 3 search locations)</label>
+
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">S. No.</th>
+            <th scope="col">Date time</th>   
+            <th scope="col">Post code</th>  
+            <th scope="col">District</th>  
+            <th scope="col">City</th> 
+            <th scope="col">Country</th> 
+            
+          </tr>
+        </thead>
+    <tbody>
+      <tr *ngFor="let lh of lookupHistory;let i = index">    
+        <td>
+            {{i+1}}
+        </td> 
+        <td>
+            {{lh.dateTimeSearch}}
+        </td>
+        <td>
+            {{lh.postcode}}
+        </td>
+        <td>
+            {{lh.adminDistrict}}
+        </td>
+        <td>
+            {{lh.region}}
+        </td>
+        <td>
+            {{lh.country}}
+        </td>
+       
+        
+      </tr>
+    </tbody>
+      </table>
+</div>
+
